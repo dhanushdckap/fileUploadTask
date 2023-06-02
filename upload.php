@@ -26,7 +26,7 @@ if(isset($_POST['upload']))
  
  if(move_uploaded_file($file_loc,$folder.$final_file))
  {
-  $sql="INSERT INTO image(file,type,size,file_path) VALUES('$final_file','$file_type','$new_size','$val')";
+  $sql="INSERT INTO files(file,type,size,file_path) VALUES('$final_file','$file_type','$new_size','$val')";
   mysqli_query($conn,$sql);
   
  
