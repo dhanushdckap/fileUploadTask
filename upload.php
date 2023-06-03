@@ -24,22 +24,36 @@ if(isset($_POST['upload']))
 
 
  
- if(move_uploaded_file($file_loc,$folder.$final_file))
- {
-  $sql="INSERT INTO files(file,type,size,file_path) VALUES('$final_file','$file_type','$new_size','$val')";
-  mysqli_query($conn,$sql);
-  
+//  if(move_uploaded_file($file_loc,$folder.$final_file))
+//  {
+//   $sql="INSERT INTO files(file,type,size,file_path) VALUES('$final_file','$file_type','$new_size','$val')";
+//   mysqli_query($conn,$sql);
  
-  echo "File sucessfully upload";
+//   echo "File sucessfully upload";
         
   
- }
- else
- {
+//  }
+//  else
+//  {
   
-  echo "Error.Please try again";
+//   echo "Error.Please try again";
 		
-		}
+// 		}
+
+
+try{
+   $insert = $conn -> prepare("INSERT INTO files(file,type,size,file_path) VALUES('$final_file','$file_type','$new_size','$val')");
+   $insert -> execute();
+
+     echo "File sucessfully upload";
+
+
+}
+catch(information $e){
+   die($e->getMessage());
+
+     echo "Error.Please try again";
+}
       
 	}
 
