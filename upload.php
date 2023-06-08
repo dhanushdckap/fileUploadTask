@@ -11,8 +11,6 @@ if(isset($_POST['upload']))
 
  $file_path = $_FILES['file']['name'];
 
- $val = realpath("$file_name");
-
  $new_size = $file_size/1024;  
 
  
